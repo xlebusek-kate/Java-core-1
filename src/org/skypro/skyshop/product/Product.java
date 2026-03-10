@@ -1,7 +1,7 @@
 package org.skypro.skyshop.product;
 import org.skypro.skyshop.basket.ProductBasket;
 public class Product {
-    private String name;
+    private final String name;
     private final int  price;
 
     public Product( String name,int price) {
