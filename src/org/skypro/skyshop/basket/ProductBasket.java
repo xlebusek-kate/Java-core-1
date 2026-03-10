@@ -19,40 +19,32 @@ public class ProductBasket {
         }
     }
 
-    public void getPrice(Product newProduct) {
-        for (int i = 0; i < productBasket.length; i++) {
-            if (productBasket[i] == null) {
-                productBasket[i] = newProduct;
-                break;
-            }
-        }
-    }
-
     public int getSumOfProductBasket() {
         int sum = 0;
-        int count = 0;
         for (Product product : productBasket) {
-            if (product == null) {
-                count++;
-                break;
-            }
             if (product != null) {
                 sum += product.getPrice();
             }
-            count++;
         }
-        return sum / count;
+        return sum;
     }
 
     public void toPrintAllProducts() {
         for (int i = 0; i < productBasket.length; i++) {
+            int count = 0;
             if (productBasket[i] == null) {
-                System.out.println("В корзине пусто!!!");
+                count++;
                 break;
             }
-            Product product = productBasket[i];
-            System.out.println("<" + product.getName() + ">: " + "<" + product.getPrice() + ">");
+            if (count == productBasket.length - 1) {
+                System.out.println("В корзине пусто!!!");
+                break;
+            } else {
+                Product product = productBasket[i];
+                System.out.println("<" + product.getName() + ">: " + "<" + product.getPrice() + ">");
+            }
         }
+
         System.out.println("Итого: <" + getSumOfProductBasket() + ">");
     }
 
