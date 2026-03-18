@@ -1,42 +1,41 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static class Main {
         public static void main(String[] args) {
-            Product product1 = new Product("Яблоко" , 100);
-            Product product2 = new Product("Апельсин", 90);
-            Product product3 = new Product("Манго", 50);
-            Product product4 = new Product("Малина", 300);
-            Product product5 = new Product("Кукуруза", 150);
-            Product product6 = new Product("Банан", 200);
+//            Новое дз
+            System.out.println("==================================");
+
+            SimpleProduct simpleProduct1 = new SimpleProduct("Молоко", 100);
+            DiscountedProduct discountedProduct1 = new DiscountedProduct("Картошка", 250, 50);
+            FixPriceProduct fixPriceProduct1 = new FixPriceProduct("Сливки", 1000);
+            System.out.println("==================================");
+
+            System.out.println(simpleProduct1.isSpecial());
+            System.out.println(discountedProduct1.isSpecial());
+            System.out.println(fixPriceProduct1.isSpecial());
+            System.out.println("==================================");
+
             ProductBasket productBasket = new ProductBasket();
-            productBasket.fillingProductBasket(product1);
-            productBasket.fillingProductBasket(product2);
-            productBasket.fillingProductBasket(product3);
-            productBasket.fillingProductBasket(product4);
-            productBasket.fillingProductBasket(product5);
-            productBasket.fillingProductBasket(product6);
+            productBasket.fillingProductBasket(simpleProduct1);
+            productBasket.fillingProductBasket(discountedProduct1);
+            productBasket.fillingProductBasket(fixPriceProduct1);
 
-            productBasket.toPrintAllProducts();
+            System.out.println(productBasket.getSumOfProductBasket());
+            System.out.println("==================================");
 
-            productBasket.getSumOfProductBasket();
+            System.out.println(productBasket.ProductBasketSpecial());
 
-            productBasket.foundProduct("Кукуруза");
-
-            productBasket.foundProduct("Банан");
-
-            productBasket.clearArrays();
-
-            productBasket.toPrintAllProducts();
-
-            productBasket.getSumOfProductBasket();
-
-            productBasket.foundProduct("Кукуруза");
-
-
+            System.out.println(simpleProduct1.toString());
+            System.out.println(discountedProduct1.toString());
+            System.out.println(fixPriceProduct1.toString());
+            System.out.println(productBasket.getSumOfProductBasket());
+            System.out.println(productBasket.ProductBasketSpecial());
 
         }
     }
