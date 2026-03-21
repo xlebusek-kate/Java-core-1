@@ -1,25 +1,24 @@
 package org.skypro.skyshop.product;
 
 public class FixPriceProduct extends Product {
-    private int fixPrice;
+    private static final int FIXED_PRICE = 150 ;
 
    public static int countFixPriceProduct = 0;
 
 
-    public FixPriceProduct(String name , int fixPrice) {
+    public FixPriceProduct(String name) {
         super(name);
-        this.fixPrice = fixPrice;
         countFixPriceProduct++;
     }
 
     @Override
     public int getPrice() {
-        return fixPrice;
+        return FIXED_PRICE ;
     }
 
     @Override
     public String toString() {
-        return super.getName() + " : " + fixPrice;
+        return super.getName() + " : " + FIXED_PRICE ;
     }
 
     @Override

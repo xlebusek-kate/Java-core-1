@@ -13,7 +13,7 @@ public class App {
 
             SimpleProduct simpleProduct1 = new SimpleProduct("Молоко", 100);
             DiscountedProduct discountedProduct1 = new DiscountedProduct("Картошка", 250, 50);
-            FixPriceProduct fixPriceProduct1 = new FixPriceProduct("Сливки", 1000);
+            FixPriceProduct fixPriceProduct1 = new FixPriceProduct("Сливки");
             System.out.println("==================================");
 
             System.out.println(simpleProduct1.isSpecial());
@@ -37,6 +37,8 @@ public class App {
             System.out.println(productBasket.getSumOfProductBasket());
             System.out.println(productBasket.ProductBasketSpecial());
 
+
+            System.out.println("Фиксированная цена: "+ fixPriceProduct1.getPrice());
         }
     }
 }
