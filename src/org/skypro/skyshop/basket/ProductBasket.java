@@ -1,6 +1,12 @@
 package org.skypro.skyshop.basket;
 
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
+
+import static org.skypro.skyshop.product.DiscountedProduct.countDiscountedProduct;
+import static org.skypro.skyshop.product.FixPriceProduct.countFixPriceProduct;
 
 public class ProductBasket {
     private final Product[] productBasket = new Product[5];
@@ -19,14 +25,14 @@ public class ProductBasket {
         }
     }
 
-    public int getSumOfProductBasket() {
+    public String getSumOfProductBasket() {
         int sum = 0;
         for (Product product : productBasket) {
             if (product != null) {
                 sum += product.getPrice();
             }
         }
-        return sum;
+        return "Итого : " + sum ;
     }
 
     public void toPrintAllProducts() {
@@ -70,5 +76,9 @@ public class ProductBasket {
         }
     }
 
+    public final String ProductBasketSpecial() {
+        return "Специальных товаров : " + (countDiscountedProduct + countFixPriceProduct);
+    }
 }
+
 
