@@ -1,6 +1,6 @@
 package org.skypro.skyshop;
 
-import org.skypro.skyshop.product.Shop.Article;
+import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.product.Shop.SearchEngine;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.Product;
