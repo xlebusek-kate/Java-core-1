@@ -1,10 +1,12 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.article.Article;
+import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.Shop.SearchEngine;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.Shop.Searchable;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static class Main {
@@ -55,7 +57,13 @@ public class App {
             searchEngine.search(" ночь всегда ");
             System.out.println(searchEngine.search(" ночь всегда "));
 
-
+            try {
+                Product product = new Product("222", 99);
+                SimpleProduct simpleProduct = new SimpleProduct("333", 77);
+                DiscountedProduct discountedProduct = new DiscountedProduct("444", 34, -9);
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
 
 
 
