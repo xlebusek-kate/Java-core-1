@@ -25,11 +25,17 @@ public class SearchEngine {
         return true;
     }
 
+    public Searchable[] getSearchables() {
+        return this.searchables;
+    }
+
+
     public void add(Searchable newSearchable) {
         for (int i = 0; i < searchables.length; i++) {
-            if (searchables[i] == null)
+            if (searchables[i] == null) {
                 searchables[i] = newSearchable;
-            break;
+                break;
+            }
         }
     }
 
@@ -46,8 +52,10 @@ public class SearchEngine {
         return count;
     }
 
-    public Searchable findBestMatch(String search, Searchable[] items) {
-        if (items == null || items.length == 0 || search == null) return null;
+    public Searchable findBestMatch(String search, Searchable[] items) throws BestResultNotFound {
+        if (items == null || items.length == 0 || search == null || search.isBlank()) {
+            throw new BestResultNotFound("Некорректный запрос: " + search);
+        }
         Searchable best = null;
         int maxCount = -1;
         for (Searchable item : items) {
@@ -59,12 +67,11 @@ public class SearchEngine {
                 maxCount = count;
                 best = item;
             }
-            if (best == null || maxCount == 0) {
-                throw new BestResultNotFound(search);
-            }
+        }
+        if (best == null || maxCount == 0) {
+            throw new BestResultNotFound("Не найден объект для запроса: " + search);
         }
         return best;
     }
-
 
 }
