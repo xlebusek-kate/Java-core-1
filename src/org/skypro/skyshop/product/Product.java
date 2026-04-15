@@ -1,5 +1,16 @@
 package org.skypro.skyshop.product;
 
+
+public abstract class Product {
+    private final String name;
+
+    public Product(String name) {
+        this.name = name;
+    }
+
+    public abstract int getPrice();
+
+=======
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.Shop.Searchable;
 
@@ -26,10 +37,14 @@ public class Product implements Searchable {
         return this.price;
     }
 
+
     public String getName() {
         return name;
     }
 
+
+    public abstract boolean isSpecial();
+=======
     @Override
     public String getSearchTerm() {
         return this.name;
@@ -44,4 +59,5 @@ public class Product implements Searchable {
     public String getStringRepresentation() {
         return Searchable.super.getStringRepresentation();
     }
+
 }

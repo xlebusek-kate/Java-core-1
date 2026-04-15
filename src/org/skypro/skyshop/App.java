@@ -5,13 +5,16 @@ import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.Shop.BestResultNotFound;
 import org.skypro.skyshop.product.Shop.SearchEngine;
 import org.skypro.skyshop.basket.ProductBasket;
+
+import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.Shop.Searchable;
+
 import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static class Main {
-        public static void main(String[] args) {
+        public static void main(String[] args) 
             Searchable article1 = new Article("Гарри Потер" , "Жил был Гарри, и было у него много врагов");
             Searchable article2 = new Article("Джон" , "Джон - фермер");
             Searchable article3 = new Article("День ночь" , "День 12 часов, ночь всегда...");
@@ -48,13 +51,16 @@ public class App {
                 }
             } catch (BestResultNotFound e) {
                 System.out.println(e.getMessage());
-            }
+         
+
+            System.out.println(simpleProduct1.toString());
+            System.out.println(discountedProduct1.toString());
+            System.out.println(fixPriceProduct1.toString());
+            System.out.println(productBasket.getSumOfProductBasket());
+            System.out.println(productBasket.ProductBasketSpecial());
 
 
-
-
-
-
+            System.out.println("Фиксированная цена: "+ fixPriceProduct1.getPrice());
         }
     }
 }

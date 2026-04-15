@@ -1,22 +1,28 @@
 package org.skypro.skyshop.product;
 
-public class DiscountedProduct {
-    String name;
-    int price;
-    int discount ;
+public class DiscountedProduct extends Product {
+     private int discountedPrice;
 
-    public DiscountedProduct(String name, int price, int discount ) {
-        chekIndex(discount );
-        chekPrice(price);
-        this.name = name;
-        this.price = price;
-        this.discount  = discount ;
-    }
-    public void chekPrice(int price){
-        if (price <= 0) throw new IllegalArgumentException("ошибка в цене странного");
-    }
-    public void chekIndex(int discount ){
-        if(discount   < 0 || discount  > 100) throw new IllegalArgumentException("ошибка в процентах");
+     public static int countDiscountedProduct = 0;
+    public DiscountedProduct(String name, int discountedPrice, int sale) {
+        super(name);
+        this.discountedPrice = discountedPrice;
+        this.sale = sale;
+        countDiscountedProduct++;
     }
 
-}
+    private final int sale;
+
+    @Override
+    public int getPrice() {
+        return this.discountedPrice * (100 - this.sale) / 100;
+    }
+
+    @Override
+    public String toString() {
+        return super.getName() +" : "+  discountedPrice + "(" + sale + "%)";
+    }
+    @Override
+    public boolean isSpecial() {
+        return true;
+    }}
